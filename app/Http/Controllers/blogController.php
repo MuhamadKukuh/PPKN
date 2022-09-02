@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class blogController extends Controller
@@ -16,6 +17,7 @@ class blogController extends Controller
     {
         $data['title'] = "PPKN";
         $data['blogs'] = Blog::all();
+        $data['categories'] = Category::all();
         
         return view('page.client.home', $data);
     }

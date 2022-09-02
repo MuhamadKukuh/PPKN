@@ -1,8 +1,5 @@
 @extends('layouts.client.mainLay')
 @section('clientContent')
-<<<<<<< HEAD
-    <h1 class="text-blue-600 font-semibold">Hallo</h1>
-=======
     
 <section class="bg-white dark:bg-gray-900 mt-10">
     <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 font-inter">
@@ -29,48 +26,26 @@
         <h2 class="text-2xl font-bold text-gray-900">Kategori Materi</h2>
   
         <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
-          <div class="group relative">
-            <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg" alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug." class="h-full w-full object-cover object-center">
-            </div>
-            <h3 class="mt-6 text-sm text-gray-500">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                Desk and Office
-              </a>
-            </h3>
-            <p class="text-base font-semibold text-gray-900">Work from home accessories</p>
+
+        @foreach ($categories as $category)
+        <a href="{{ route('myBlog_show', $category->id) }}">
+        <div class="group relative">
+          <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+          
+            <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg" alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug." class="h-full w-full object-cover object-center">
           </div>
-  
-          <div class="group relative">
-            <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg" alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant." class="h-full w-full object-cover object-center">
-            </div>
-            <h3 class="mt-6 text-sm text-gray-500">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                Self-Improvement
-              </a>
-            </h3>
-            <p class="text-base font-semibold text-gray-900">Journals and note-taking</p>
-          </div>
-  
-          <div class="group relative">
-            <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg" alt="Collection of four insulated travel bottles on wooden shelf." class="h-full w-full object-cover object-center">
-            </div>
-            <h3 class="mt-6 text-sm text-gray-500">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                Travel
-              </a>
-            </h3>
-            <p class="text-base font-semibold text-gray-900">Daily commute essentials</p>
-          </div>
+          <h3 class="mt-6 text-sm text-gray-500">
+              <span class="absolute inset-0"></span>
+              {{ substr($category->created_at, 0, -9) == date("Y-m-d") ? 'Latest' : 'Topic' }}
+          </h3>
+          
+          <p class="text-base font-semibold text-gray-900">{{ $category->category }}</p>
+        </div>
+        </a>
+        @endforeach
         </div>
       </div>
     </div>
-  </div>    
->>>>>>> cab3a3bc954a8b4d78b27a60627c1812b20761f3
-    
+</div>    
+
 @endsection

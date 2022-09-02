@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'guest'], function(){ 
-    Route::get('/', [blogController::class, 'index'])->name('home');
+    Route::get('/', [blogController::class, 'index'])->name('myBlog');
+    Route::get('/categories/{id}', [blogController::class, 'show'])->name('myBlog_show');
 });
