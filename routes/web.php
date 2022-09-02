@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\blogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('page.client.home');
+Route::group(['middleware' => 'guest'], function(){ 
+    Route::get('/', [blogController::class, 'index'])->name('myBlog');
+    Route::get('/categories/{id}', [blogController::class, 'show'])->name('myBlog_show');
 });
